@@ -73,7 +73,7 @@ class _PuntoNeutroPageState extends State<PuntoNeutroPage>
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
-                'https://images.unsplash.com/photo-1515377905703-c4788e51af15',
+                'https://images.unsplash.com/photo-1556696863-6c5eddae0f5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuZXdzJTIwam91cm5hbGlzbSUyMG5ld3NwYXBlcnxlbnwxfHx8fDE3NTY4MTk3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
                 height: 80,
                 width: double.infinity,
                 fit: BoxFit.cover,
