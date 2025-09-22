@@ -54,6 +54,15 @@ class _CommentSectionScreenState extends State<CommentSectionScreen> {
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            tooltip: "Salir",
+            onPressed: () {
+              // Por ahora no hace nada
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
