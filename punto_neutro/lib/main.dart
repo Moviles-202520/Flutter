@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:punto_neutro/screens/register_screen.dart';
-
+import 'package:punto_neutro/screens/loading_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const PuntoNeutroPage(), // Cambiado a PuntoNeutroPage
+      home: const LoadingScreen(), // Cambiado a PuntoNeutroPage
       debugShowCheckedModeBanner: false, // Oculta la etiqueta de depuración
     );
   }
