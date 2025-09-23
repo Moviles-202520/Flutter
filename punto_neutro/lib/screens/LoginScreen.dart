@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:punto_neutro/screens/PuntoNeutroApp.dart';
+import 'package:punto_neutro/screens/register_screen.dart';
 
 void main() {
   runApp(const PuntoNeutroApp());
