@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:punto_neutro/screens/ArticleDetailPage.dart';
 import 'package:punto_neutro/screens/ForgotPasswordScreen.dart';
 import 'package:punto_neutro/screens/LoginScreen.dart';
+import 'package:punto_neutro/screens/ProfilePage.dart';
 import 'package:punto_neutro/screens/PuntoNeutroApp.dart';
 
 void main() {
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Home(),
+      home: const ProfilePage(),
     );
   }
 }
