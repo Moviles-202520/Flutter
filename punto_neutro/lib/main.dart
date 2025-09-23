@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:punto_neutro/screens/article_screen.dart';
+import 'package:punto_neutro/screens/logout_screen.dart';
 import 'package:punto_neutro/screens/register_screen.dart';
 import 'package:punto_neutro/screens/loading_screen.dart';
 import 'package:punto_neutro/screens/comment_section_screen.dart';
@@ -32,7 +34,13 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const CommentSectionScreen(), // Cambiado a PuntoNeutroPage
+      home:  ConfirmLogoutView(onYes: () {
+        // Define what happens when "Yes" is pressed
+        print("Yes pressed");
+      }, onNo: () {
+        // Define what happens when "No" is pressed
+        print("No pressed");
+      }), // Cambiado a PuntoNeutroPage
       debugShowCheckedModeBanner: false, // Oculta la etiqueta de depuración
     );
   }
