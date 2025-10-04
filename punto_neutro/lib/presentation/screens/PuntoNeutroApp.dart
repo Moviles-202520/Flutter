@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:punto_neutro/screens/LoginScreen.dart';
+import 'package:punto_neutro/presentation/screens/LoginScreen.dart';
 
 void main() {
   runApp(const Home());
