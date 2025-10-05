@@ -1,0 +1,134 @@
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../domain/repositories/news_repository.dart';
+import '../../domain/models/news_item.dart';
+import '../../domain/models/rating_item.dart';
+import '../../domain/models/comment.dart';
+
+class SupabaseNewsRepository implements NewsRepository {
+  final SupabaseClient _supabase = Supabase.instance.client;
+
+  @override
+  Future<NewsItem> getNewsDetail(String news_item_id) async {
+    try {
+      final response = await _supabase
+          .from('news_items')
+          .select()
+          .eq('news_item_id', int.parse(news_item_id))
+          .single();
+
+      return _mapToNewsItem(response);
+    } catch (e) {
+      print('❌ Error cargando noticia: $e');
+      throw Exception('No se pudo cargar la noticia');
+    }
+  }
+
+  @override
+  Future<List<Comment>> getComments(String news_item_id) async {
+    try {
+      final response = await _supabase
+          .from('comments')
+          .select()
+          .eq('news_item_id', int.parse(news_item_id))
+          .order('timestamp', ascending: false);
+
+      return response.map<Comment>((comment) {
+        return Comment(
+          comment_id: comment['comment_id']?.toString() ?? 'unknown',
+          news_item_id: comment['news_item_id']?.toString() ?? news_item_id,
+          user_profile_id: comment['user_profile_id']?.toString() ?? '1',
+          user_name: comment['user_name'] as String? ?? 'Usuario',
+          content: comment['content'] as String? ?? '',
+          timestamp: comment['timestamp'] != null 
+              ? DateTime.parse(comment['timestamp'] as String)
+              : DateTime.now(),
+        );
+      }).toList();
+    } catch (e) {
+      print('❌ Error cargando comentarios: $e');
+      return [];
+    }
+  }
+
+  // ✅ IMPLEMENTAR EL MÉTODO DE LA INTERFAZ
+  @override
+  Future<int> getRatingsCount(String news_item_id) async {
+    try {
+      final response = await _supabase
+          .from('rating_items')
+          .select()
+          .eq('news_item_id', int.parse(news_item_id));
+      
+      return response.length;
+    } catch (e) {
+      print('❌ Error contando ratings: $e');
+      return 0;
+    }
+  }
+
+  @override
+  Future<void> submitRating(RatingItem rating_item) async {
+    try {
+      await _supabase.from('rating_items').insert({
+        'rating_item_id': int.tryParse(rating_item.rating_item_id) ?? DateTime.now().millisecondsSinceEpoch,
+        'news_item_id': int.tryParse(rating_item.news_item_id) ?? 1,
+        'user_profile_id': int.tryParse(rating_item.user_profile_id) ?? 1,
+        'assigned_reliability_score': rating_item.assigned_reliability_score,
+        'comment_text': rating_item.comment_text,
+        'rating_date': rating_item.rating_date.toIso8601String(),
+        'is_completed': rating_item.is_completed,
+      });
+      print('✅ Rating enviado a Supabase');
+    } catch (e) {
+      print('❌ Error enviando rating: $e');
+    }
+  }
+
+  @override
+  Future<void> submitComment(Comment comment) async {
+    try {
+      await _supabase.from('comments').insert({
+        // comment_id se auto-genera (BIGSERIAL)
+        'news_item_id': int.tryParse(comment.news_item_id) ?? 1,
+        'user_profile_id': int.tryParse(comment.user_profile_id) ?? 1,
+        'user_name': comment.user_name,
+        'content': comment.content,
+        'timestamp': comment.timestamp.toIso8601String(),
+      });
+      print('✅ Comentario guardado en Supabase');
+    } catch (e) {
+      print('❌ Error guardando comentario: $e');
+      rethrow;
+    }
+  }
+
+  NewsItem _mapToNewsItem(Map<String, dynamic> response) {
+    return NewsItem(
+      news_item_id: (response['news_item_id']?.toString() ?? '0'),
+      user_profile_id: (response['user_profile_id']?.toString() ?? '0'),
+      title: response['title'] as String? ?? 'Sin título',
+      short_description: response['short_description'] as String? ?? '',
+      image_url: response['image_url'] as String? ?? '',
+      category_id: response['category_id'] as String? ?? '',
+      author_type: response['author_type'] as String? ?? '',
+      author_institution: response['author_institution'] as String? ?? '',
+      days_since: (response['days_since'] as int?) ?? 0,
+      comments_count: (response['comments_count'] as int?) ?? 0,
+      average_reliability_score: (response['average_reliability_score'] as num?)?.toDouble() ?? 0.5,
+      is_fake: response['is_fake'] as bool? ?? false,
+      is_verified_source: response['is_verified_source'] as bool? ?? false,
+      is_verified_data: response['is_verified_data'] as bool? ?? false,
+      is_recognized_author: response['is_recognized_author'] as bool? ?? false,
+      is_manipulated: response['is_manipulated'] as bool? ?? false,
+      long_description: response['long_description'] as String? ?? '',
+      original_source_url: response['original_source_url'] as String? ?? '',
+      publication_date: response['publication_date'] != null 
+          ? DateTime.parse(response['publication_date'] as String)
+          : DateTime.now(),
+      added_to_app_date: response['added_to_app_date'] != null
+          ? DateTime.parse(response['added_to_app_date'] as String)
+          : DateTime.now(),
+      total_ratings: (response['total_ratings'] as int?) ?? 0,
+    );
+  }
+}
