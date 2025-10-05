@@ -257,8 +257,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-<<<<<<< HEAD
-=======
   file:
     dependency: transitive
     description:
@@ -275,7 +273,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   flutter:
     dependency: "direct main"
     description: flutter
@@ -307,8 +304,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
-=======
   frontend_server_client:
     dependency: transitive
     description:
@@ -405,7 +400,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   intl:
     dependency: transitive
     description:
@@ -414,8 +408,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.20.2"
-<<<<<<< HEAD
-=======
   io:
     dependency: transitive
     description:
@@ -448,7 +440,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.1"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   leak_tracker:
     dependency: transitive
     description:
@@ -553,8 +544,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.16.0"
-<<<<<<< HEAD
-=======
   mime:
     dependency: transitive
     description:
@@ -563,7 +552,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   nested:
     dependency: transitive
     description:
@@ -572,8 +560,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-<<<<<<< HEAD
-=======
   nm:
     dependency: transitive
     description:
@@ -590,7 +576,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   path:
     dependency: transitive
     description:
@@ -599,8 +584,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
-<<<<<<< HEAD
-=======
   path_provider:
     dependency: transitive
     description:
@@ -665,7 +648,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.6"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -674,8 +656,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-<<<<<<< HEAD
-=======
   pool:
     dependency: transitive
     description:
@@ -692,7 +672,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.5.0"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   provider:
     dependency: "direct main"
     description:
@@ -701,8 +680,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.5+1"
-<<<<<<< HEAD
-=======
   pub_semver:
     dependency: transitive
     description:
@@ -815,7 +792,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   sky_engine:
     dependency: transitive
     description: flutter
@@ -1013,8 +989,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "15.0.2"
-<<<<<<< HEAD
-=======
   watcher:
     dependency: transitive
     description:
@@ -1047,7 +1021,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
   win32:
     dependency: transitive
     description:
@@ -1056,8 +1029,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.14.0"
-<<<<<<< HEAD
-=======
   xdg_directories:
     dependency: transitive
     description:
@@ -1090,7 +1061,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
->>>>>>> 090dfbc666abdd27157f35daffe49f7d05ff4003
 sdks:
   dart: ">=3.9.0 <4.0.0"
   flutter: ">=3.35.0"
