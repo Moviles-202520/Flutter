@@ -7,5 +7,4 @@ abstract class NewsRepository {
   Future<List<Comment>> getComments(String news_item_id);
   Future<void> submitRating(RatingItem rating_item);
   Future<void> submitComment(Comment comment);
-  Future<int> getRatingsCount(String news_item_id);
 }

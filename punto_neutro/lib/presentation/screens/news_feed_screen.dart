@@ -304,43 +304,28 @@ class _NewsItemCard extends StatelessWidget {
   }
 
   Widget _buildActionSidebar() {
-  return Consumer<NewsFeedViewModel>(
-    builder: (context, viewModel, child) {
-      final commentsCount = viewModel.getCommentsCount(news.news_item_id);
-      final ratingsCount = viewModel.getRatingsCount(news.news_item_id);
-      
-      return Positioned(
-        right: 16,
-        bottom: 100,
-        child: Column(
-          children: [
-            // Avatar del autor
-            _buildAuthorAvatar(),
-            
-            const SizedBox(height: 20),
-            
-            // Acciones con números reales
-            _buildActionButton(
-              Icons.favorite_border, 
-              viewModel.formatCount(ratingsCount), 
-              () {}
-            ),
-            _buildActionButton(
-              Icons.comment_outlined, 
-              viewModel.formatCount(commentsCount), 
-              () {}
-            ),
-            _buildActionButton(Icons.bookmark_border, 'Guardar', () {}),
-            _buildActionButton(Icons.share_outlined, 'Compartir', () {}),
-            
-            const SizedBox(height: 20),
-            
-            // Indicador de progreso
-            _buildProgressIndicator(),
-          ],
-        ),
-      );
-    },
+  return Positioned(
+    right: 16,
+    bottom: 100,
+    child: Column(
+      children: [
+        // Avatar del autor
+        _buildAuthorAvatar(),
+        
+        const SizedBox(height: 20),
+        
+        // Acciones con números fijos por ahora
+        _buildActionButton(Icons.favorite_border, '1.2K', () {}),
+        _buildActionButton(Icons.comment_outlined, '348', () {}),
+        _buildActionButton(Icons.bookmark_border, 'Guardar', () {}),
+        _buildActionButton(Icons.share_outlined, 'Compartir', () {}),
+        
+        const SizedBox(height: 20),
+        
+        // Indicador de progreso
+        _buildProgressIndicator(),
+      ],
+    ),
   );
 }
 
