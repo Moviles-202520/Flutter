@@ -7,10 +7,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  await Hive.openBox<Map<String, dynamic>>('news_cache');
-  await Hive.openBox<Map<String, dynamic>>('comments_cache');
-  await Hive.openBox<dynamic>('ratings_cache');
+  //await Hive.initFlutter();
+  //await Hive.openBox<dynamic>('news_cache');
+  //await Hive.openBox<dynamic>('comments_cache');
+  //await Hive.openBox<dynamic>('ratings_cache');
   // ✅ INICIALIZAR SUPABASE
   await Supabase.initialize(
     url: 'https://oikdnxujjmkbewdhpyor.supabase.co', // REEMPLAZA CON TU URL

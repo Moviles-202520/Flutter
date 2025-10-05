@@ -12,7 +12,7 @@ class NewsFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => NewsFeedViewModel(HybridNewsRepository()),
+      create: (_) => NewsFeedViewModel(SupabaseNewsRepository()),
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: _buildAppBar(),

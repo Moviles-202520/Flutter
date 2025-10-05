@@ -11,9 +11,9 @@ class HybridNewsRepository implements NewsRepository {
   final Connectivity _connectivity = Connectivity();
   
   // ✅ CAJAS CON TIPOS CORRECTOS
-  Box<Map<String, dynamic>> get _newsCache => Hive.box<Map<String, dynamic>>('news_cache');
-  Box<dynamic> get _commentsCache => Hive.box<dynamic>('comments_cache'); // ✅ DYNAMIC PARA LISTAS
-  Box<dynamic> get _ratingsCache => Hive.box<dynamic>('ratings_cache');   // ✅ DYNAMIC PARA MIXED TYPES
+  Box<dynamic> get _newsCache => Hive.box<dynamic>('news_cache');
+  Box<dynamic> get _commentsCache => Hive.box<dynamic>('comments_cache');
+  Box<dynamic> get _ratingsCache => Hive.box<dynamic>('ratings_cache');
 
   // ✅ VERIFICAR CONEXIÓN
   Future<bool> get _isConnected async {
@@ -275,34 +275,34 @@ class HybridNewsRepository implements NewsRepository {
     }
   }
   NewsItem _mapToNewsItem(Map<String, dynamic> response) {
-    return NewsItem(
-      news_item_id: (response['news_item_id']?.toString() ?? '0'),
-      user_profile_id: (response['user_profile_id']?.toString() ?? '0'),
-      title: response['title'] as String? ?? 'Sin título',
-      short_description: response['short_description'] as String? ?? '',
-      image_url: response['image_url'] as String? ?? '',
-      category_id: response['category_id'] as String? ?? '',
-      author_type: response['author_type'] as String? ?? '',
-      author_institution: response['author_institution'] as String? ?? '',
-      days_since: (response['days_since'] as int?) ?? 0,
-      comments_count: (response['comments_count'] as int?) ?? 0,
-      average_reliability_score: (response['average_reliability_score'] as num?)?.toDouble() ?? 0.5,
-      is_fake: response['is_fake'] as bool? ?? false,
-      is_verified_source: response['is_verified_source'] as bool? ?? false,
-      is_verified_data: response['is_verified_data'] as bool? ?? false,
-      is_recognized_author: response['is_recognized_author'] as bool? ?? false,
-      is_manipulated: response['is_manipulated'] as bool? ?? false,
-      long_description: response['long_description'] as String? ?? '',
-      original_source_url: response['original_source_url'] as String? ?? '',
-      publication_date: response['publication_date'] != null 
-          ? DateTime.parse(response['publication_date'] as String)
-          : DateTime.now(),
-      added_to_app_date: response['added_to_app_date'] != null
-          ? DateTime.parse(response['added_to_app_date'] as String)
-          : DateTime.now(),
-      total_ratings: (response['total_ratings'] as int?) ?? 0,
-    );
-  }
+  return NewsItem(
+    news_item_id: (response['news_item_id']?.toString() ?? '0'),
+    user_profile_id: (response['user_profile_id']?.toString() ?? '0'),
+    title: response['title'] as String? ?? 'Sin título',
+    short_description: response['short_description'] as String? ?? '',
+    image_url: response['image_url'] as String? ?? '',
+    category_id: (response['category_id']?.toString() ?? ''), // ✅ CONVERTIR A STRING
+    author_type: response['author_type'] as String? ?? '',
+    author_institution: response['author_institution'] as String? ?? '',
+    days_since: (response['days_since'] as int?) ?? 0,
+    comments_count: (response['comments_count'] as int?) ?? 0,
+    average_reliability_score: (response['average_reliability_score'] as num?)?.toDouble() ?? 0.5,
+    is_fake: response['is_fake'] as bool? ?? false,
+    is_verified_source: response['is_verified_source'] as bool? ?? false,
+    is_verified_data: response['is_verified_data'] as bool? ?? false,
+    is_recognized_author: response['is_recognized_author'] as bool? ?? false,
+    is_manipulated: response['is_manipulated'] as bool? ?? false,
+    long_description: response['long_description'] as String? ?? '',
+    original_source_url: response['original_source_url'] as String? ?? '',
+    publication_date: response['publication_date'] != null 
+        ? DateTime.parse(response['publication_date'] as String)
+        : DateTime.now(),
+    added_to_app_date: response['added_to_app_date'] != null
+        ? DateTime.parse(response['added_to_app_date'] as String)
+        : DateTime.now(),
+    total_ratings: (response['total_ratings'] as int?) ?? 0,
+  );
+}
 
   // ✅ DATOS DE PRUEBA PARA OFFLINE
   NewsItem _getFallbackNews(String news_item_id) {
